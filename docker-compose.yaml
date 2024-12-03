@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: todo_db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=todo_db
+    ports:
+      # changed to a non standard port to avoid conflicts
+      - '5436:5432'
+    volumes:
+      - postgres_data_prism_todo:/var/lib/postgresql/data
+
+volumes:
+  postgres_data_prism_todo:

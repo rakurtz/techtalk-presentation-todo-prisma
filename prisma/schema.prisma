@@ -11,12 +11,19 @@ model Todo {
   id          String    @id @default(cuid())
   title       String
   description String?
+  urgency     Urgency  @default(NORMAL)
   completed   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
   // relation
     assignees   Join_Todo_IdiotWhoHasToDoIt[]
+}
+
+enum Urgency {
+  NORMAL
+  SUPER
+  ZERO
 }
 
 model IdiotWhoHasToDoIt {
